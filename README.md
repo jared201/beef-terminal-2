@@ -13,6 +13,6 @@ pip install textualize
 Then, you can run the dashboard using the following command:
 
 ```bash
-textualize run README.md
+python main.py
 ```
 
