@@ -25,7 +25,7 @@ class Dashboard(App):
         yield Footer()
 
     async def quit(self):
-        await self.exit()
+         self.exit()
 
     async def copy(self):
         await self.clipboard.copy("Hello, World!")
