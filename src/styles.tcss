@@ -1,0 +1,11 @@
+/* styles.tcss */
+Horizontal {
+    display: block; /* Changed from flex to block */
+}
+
+Placeholder {
+    display: block; /* Ensure placeholders are block elements */
+    margin: 10; /* Removed px unit */
+    padding: 20; /* Removed px unit */
+    text-align: center;
+}

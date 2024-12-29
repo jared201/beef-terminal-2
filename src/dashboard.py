@@ -3,13 +3,15 @@ from typing import Type
 
 from textual._path import CSSPathType
 from textual.app import App, ComposeResult
+from textual.containers import Horizontal
 from textual.driver import Driver
-from textual.widgets import Header, Footer
+from textual.widgets import Header, Footer, Placeholder
 
 
 class Dashboard(App):
     BINDINGS = [("q", "quit", "Quit"), ("c", "copy", "Copy"), ("d", "toggle_dark_mode", "Toggle Dark Mode")]
     STYLES = {"background": "white", "text": "black"}
+    CSS_PATH = "styles.tcss"
 
     def __init__(
             self,
@@ -22,6 +24,10 @@ class Dashboard(App):
 
     def compose(self) -> ComposeResult:
         yield Header()
+        yield Horizontal(
+            Placeholder(name="Screen 1"),
+            Placeholder(name="Screen 2")
+        )
         yield Footer()
 
     async def quit(self):
