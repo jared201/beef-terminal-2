@@ -3,7 +3,7 @@ from typing import Type
 
 from textual._path import CSSPathType
 from textual.app import App, ComposeResult
-from textual.containers import Horizontal
+from textual.containers import Horizontal, Container
 from textual.driver import Driver
 from textual.widgets import Header, Footer, Placeholder
 
@@ -24,10 +24,11 @@ class Dashboard(App):
 
     def compose(self) -> ComposeResult:
         yield Header()
-        yield Horizontal(
-            Placeholder(name="Screen 1"),
-            Placeholder(name="Screen 2")
-        )
+        yield Container(
+            Placeholder("Screen 1", id="col1"),
+            Placeholder("Screen 2", id="col2"),
+            Placeholder("Screen 3", id="col3")
+        , id="top")
         yield Footer()
 
     async def quit(self):

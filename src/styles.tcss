@@ -1,11 +1,54 @@
-/* styles.tcss */
-Horizontal {
-    display: block; /* Changed from flex to block */
+Placeholder {
+    height: 100%;
 }
 
-Placeholder {
-    display: block; /* Ensure placeholders are block elements */
-    margin: 10; /* Removed px unit */
-    padding: 20; /* Removed px unit */
-    text-align: center;
+#top {
+    height: 50%;
+    width: 100%;
+    layout: grid;
+    grid-size: 2 2;
+}
+
+#left {
+    row-span: 2;
+}
+
+#bot {
+    height: 50%;
+    width: 100%;
+    layout: grid;
+    grid-size: 8 8;
+}
+
+#c1 {
+    row-span: 4;
+    column-span: 8;
+    height: 100%;
+}
+
+#col1, #col2, #col3 {
+    width: 1fr;
+}
+
+#p1 {
+    row-span: 4;
+    column-span: 4;
+}
+
+#p2 {
+    row-span: 2;
+    column-span: 4;
+}
+
+#p3 {
+    row-span: 2;
+    column-span: 2;
+}
+
+#p4 {
+    row-span: 1;
+    column-span: 2;
+}
+#row1, #row2, #row3, #row4, #row5, #row6, #row7, #row8 {
+    height: 1fr;
 }
