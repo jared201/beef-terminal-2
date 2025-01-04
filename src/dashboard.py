@@ -1,12 +1,14 @@
-"""Create an empty dashboard in textualize"""
+# src/dashboard.py
 from typing import Type
 
 from textual._path import CSSPathType
 from textual.app import App, ComposeResult
-from textual.containers import Horizontal, Container
+from textual.containers import Horizontal, Vertical, Container
 from textual.driver import Driver
 from textual.widgets import Header, Footer, Placeholder
-
+from src.cpu_screen import CPUScreen
+from src.disk_screen import DiskScreen
+from src.memory_screen import MemoryScreen
 
 class Dashboard(App):
     BINDINGS = [("q", "quit", "Quit"), ("c", "copy", "Copy"), ("d", "toggle_dark_mode", "Toggle Dark Mode")]
@@ -24,11 +26,19 @@ class Dashboard(App):
 
     def compose(self) -> ComposeResult:
         yield Header()
-        yield Container(
-            Placeholder("Screen 1", id="col1"),
-            Placeholder("Screen 2", id="col2"),
-            Placeholder("Screen 3", id="col3")
-        , id="top")
+        yield Horizontal(
+            Vertical(
+                CPUScreen(),  # Replaced "Screen 1" placeholder with CPUScreen
+                DiskScreen(),  # Replaced "Screen 2" placeholder with DiskScreen
+                MemoryScreen()  # Replaced "Screen 3" placeholder with MemoryScreen
+            , id="vertical-layout"),
+            Container(
+                Placeholder("Screen 4"),
+                Placeholder("Screen 5"),
+                Placeholder("Screen 6"),
+                id="right-container"
+            )
+        )
         yield Footer()
 
     async def quit(self):
@@ -39,4 +49,3 @@ class Dashboard(App):
 
     async def toggle_dark_mode(self):
         self.dark = not self.dark
-
